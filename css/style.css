@@ -1,0 +1,546 @@
+/* Estilos Globais e do Corpo */
+body,
+html {
+  margin: 0;
+  width: 100%;
+  height: auto;
+  background-color: #1a1a1a;
+  scroll-behavior: smooth;
+}
+
+body {
+  touch-action: pan-y;
+  /* Permite scroll vertical em dispositivos de toque */
+}
+
+#app {
+  font-family: "Montserrat", serif;
+}
+
+/* Canvas de Fundo */
+#canvas {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: -1;
+}
+
+/* Seção Hero (Cabeçalho Principal) */
+.hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  text-align: center;
+
+}
+
+.profile-photo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 4px solid white;
+  object-fit: cover;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+  padding: 0;
+  color: white;
+  text-shadow: 0 0 20px rgba(0, 0, 0, 1);
+  line-height: 100%;
+  user-select: none;
+}
+
+h1 {
+  font-size: 80px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.hero h2 {
+  font-size: 60px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.name-and-logo {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.hero-logo {
+  width: 70px;
+  height: auto;
+  margin-top: -5px;
+  filter: brightness(1.2) drop-shadow(0 0 8px rgba(100, 100, 255, 0.8)) drop-shadow(0 0 15px rgba(100, 100, 255, 0.6));
+  transition: filter 0.3s ease;
+}
+
+.hero-logo:hover {
+  filter: brightness(1.5) drop-shadow(0 0 12px rgba(100, 100, 255, 1)) drop-shadow(0 0 25px rgba(100, 100, 255, 0.8));
+}
+
+/* Conteúdo Principal */
+.main-content {
+  background-color: rgba(26, 26, 26, 0.8);
+  backdrop-filter: blur(5px);
+  padding: 50px 0;
+}
+
+.content-section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.content-section h2 {
+  font-size: 48px;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+}
+
+.bio-text {
+  color: #ddd;
+  font-size: 18px;
+  line-height: 1.7;
+  text-align: justify;
+  text-shadow: none;
+}
+
+/* Animação de Scroll */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* --- Carrossel de Cards (Desktop) --- */
+.card-scroller {
+  overflow: hidden;
+  position: relative;
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  padding: 15px 0;
+}
+
+.cards-container {
+  display: flex;
+  gap: 20px;
+  text-align: left;
+  white-space: nowrap;
+  animation: scroll 40s linear infinite;
+}
+
+.card-scroller:hover .cards-container {
+  animation-play-state: paused;
+}
+
+.card {
+  background-color: rgba(40, 40, 40, 0.9);
+  border: 1px solid #444;
+  border-radius: 10px;
+  padding: 25px;
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  white-space: normal;
+  flex-shrink: 0;
+  width: 350px;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.card h3 {
+  margin: 0 0 10px 0;
+  color: #f967fb;
+  font-size: 22px;
+}
+
+.card .card-subtitle {
+  color: #ccc;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.card p {
+  color: #ddd;
+  font-size: 16px;
+  line-height: 1.6;
+  flex-grow: 1;
+}
+
+.card .card-footer {
+  margin-top: auto;
+  padding-top: 15px;
+}
+
+.card .card-link {
+  color: #53bc28;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.card .card-link:hover {
+  color: #83f36e;
+}
+
+/* Letreiro de Tecnologias */
+.tech-scroller {
+  overflow: hidden;
+  position: relative;
+  padding: 2%;;
+  -webkit-mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+}
+
+.tech-list {
+  display: flex;
+  gap: 40px;
+  white-space: nowrap;
+  animation: scroll 30s linear infinite;
+}
+
+.tech-scroller:hover .tech-list {
+  animation-play-state: paused;
+}
+
+.tech-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.tech-item:hover {
+  transform: scale(1.1);
+}
+
+.tech-item img {
+  width: 80px;
+  height: 80px;
+}
+
+.tech-item span {
+  color: #ddd;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* Rodapé */
+footer {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #111;
+}
+
+footer p {
+  text-shadow: none;
+  color: #888;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+}
+
+.social-links a {
+  display: inline-block;
+}
+
+.social-links img {
+  width: 32px;
+  height: 32px;
+  filter: invert(1) brightness(0.8);
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.social-links img:hover {
+  filter: invert(1) brightness(1);
+  transform: scale(1.15);
+}
+
+/* Esconde os botões do slider por padrão */
+.slider-btn {
+  display: none;
+}
+
+/* --- ESTILOS RESPONSIVOS --- */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 50px;
+  }
+
+  .hero h2 {
+    font-size: 36px;
+  }
+
+  .profile-photo {
+    width: 120px;
+    height: 120px;
+  }
+
+  .hero-logo {
+    width: 50px;
+  }
+
+  .content-section {
+    padding: 40px 0;
+  }
+
+  .content-section h2 {
+    font-size: 32px;
+    margin-bottom: 30px;
+  }
+
+  .bio-text {
+    font-size: 16px;
+    padding: 0 20px;
+  }
+
+  /* --- Slider Manual para Cards e Tecnologias --- */
+  .card-scroller, .tech-scroller {
+    mask-image: none;
+    -webkit-mask-image: none;
+    overflow: visible;
+    /* Permite que os botões fiquem fora */
+  }
+
+  .cards-container, .tech-list {
+    animation: none;
+    /* Desliga a animação automática */
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    /* Esconde a barra de rolagem */
+    padding: 0 20px;
+    /* Garante espaço nas laterais */
+  }
+
+  .cards-container::-webkit-scrollbar, .tech-list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .card, .tech-item {
+    width: 80%;
+    /* Cada item ocupa 80% da tela */
+    scroll-snap-align: center;
+    /* Centraliza o item ativo */
+  }
+
+  .card:hover, .tech-item:hover {
+    transform: none;
+  }
+
+  /* Desativa o efeito de flutuar no modo touch */
+
+  /* Mostra e estiliza os botões */
+  .slider-btn {
+    display: block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .slider-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .prev-btn {
+    left: -10px;
+  }
+
+  /* Posiciona fora do padding */
+  .next-btn {
+    right: -10px;
+  }
+
+  /* Tecnologias maiores e ainda rodando */
+  .tech-item img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .tech-list {
+    gap: 50px;
+  }
+}
+
+/* -------------------------------------------------- */
+/* --- NOVOS ESTILOS PARA O CABEÇALHO E NAVEGAÇÃO --- */
+/* -------------------------------------------------- */
+
+.main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background-color: rgba(26, 26, 26, 0.5); /* Fundo semi-transparente */
+    backdrop-filter: blur(10px); /* Efeito de vidro fosco */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    height: 70px;
+}
+
+.nav-logo img {
+    height: 40px;
+    width: auto;
+    transition: transform 0.3s ease;
+}
+
+.nav-logo img:hover {
+    transform: scale(1.1);
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 30px;
+}
+
+.nav-menu a {
+    color: #ddd;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    position: relative;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+}
+
+.nav-menu a:hover {
+    color: white;
+}
+
+.nav-menu a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #f967fb;
+    transition: width 0.3s ease;
+}
+
+.nav-menu a:hover::after {
+    width: 100%;
+}
+
+.hamburger {
+    display: none; /* Escondido em desktop */
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+.hamburger .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: white;
+    transition: all 0.3s ease-in-out;
+}
+
+/* --- ESTILOS RESPONSIVOS --- */
+@media (max-width: 768px) {
+
+    /* Mostra o menu sanduíche e esconde a navegação de desktop */
+    .nav-menu {
+        position: fixed;
+        left: -100%; /* Começa fora da tela */
+        top: 70px; /* Abaixo do cabeçalho */
+        flex-direction: column;
+        background-color: rgba(26, 26, 26, 0.95);
+        backdrop-filter: blur(10px);
+        width: 100%;
+        height: calc(100vh - 70px);
+        text-align: center;
+        transition: left 0.3s ease;
+        gap: 0;
+    }
+
+    .nav-menu.active {
+        left: 0; /* Traz o menu para a tela */
+    }
+    
+    .nav-menu li {
+        padding: 20px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .nav-menu a {
+        font-size: 20px;
+    }
+
+    .hamburger {
+        display: block; /* Mostra o botão */
+    }
+
+    /* Animação do botão para "X" */
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+}
+
+#sobre-mim,
+#experiencias,
+#projetos,
+#tecnologias {
+    scroll-margin-top: 70px;
+}
